@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Convite Jovens Sarados</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #FF6F00; /* Fundo laranja vibrante */
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 95vw;
+      max-width: 1080px;
+      height: 65vh;
+      max-height: 1560px;
+      background: transparent;
+      perspective: 1000px;
+    }
+
+    .envelope-body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #fff; /* Carta branca */
+      border: 2px solid #e68a00; /* borda laranja escuro */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 1;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 50% solid transparent;
+      border-right: 50% solid transparent;
+      border-bottom: 25vh solid #fff; /* flap branco */
+      transform-origin: top center;
+      transition: transform 1.2s ease-in-out;
+      z-index: 2;
+      border-radius: 0 0 10px 10px;
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+
+    .envelope-flap.open {
+      transform: rotateX(-180deg);
+    }
+
+    .letter {
+      position: absolute;
+      top: 25vh;
+      left: 3%;
+      width: 94%;
+      height: calc(100% - 25vh - 20px);
+      background: #fff; /* carta branca */
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 1s ease, opacity 1s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      z-index: 0;
+      overflow-y: auto;
+      color: #222;
+    }
+
+    .letter.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .letter h2 {
+      margin-top: 0;
+      font-size: 2.5rem;
+      color: #8b0000;
+      text-align: center;
+    }
+
+    .letter p {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .letter ul {
+      padding-left: 25px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .letter li {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    /* Scrollbar estilizado para o letter */
+    .letter::-webkit-scrollbar {
+      width: 8px;
+    }
+    .letter::-webkit-scrollbar-track {
+      background: #ddd;
+      border-radius: 8px;
+    }
+    .letter::-webkit-scrollbar-thumb {
+      background: #999;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-container">
+    <div class="envelope-flap" id="flap"></div>
+    <div class="envelope-body">
+      <div class="letter" id="letter">
+        <h2>📬 Convite Jovens Sarados</h2>
+        <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
+        <p>
+          Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
+        </p>
+        <p>
+          Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
+          Vamos juntos buscar a renovação e o avivamento espiritual!
+        </p>
+        <p><strong>O que levar?</strong></p>
+        <ul>
+          <li>✅ Bíblia e terço</li>
+          <li>✅ Coração aberto para Jesus</li>
+          <li>✅ 1 ou mais amigos para viver esse momento de avivamento</li>
+        </ul>
+        <p>
+          📆 <strong>Data:</strong> 26 de julho<br>
+          ⏰ <strong>Hora:</strong> 19h00<br>
+          ⛪ <strong>Local:</strong> Vilarejo – Paróquia Maria de Nazaré<br>
+          Avenida Adélia Barbosa Oliveira, s/n
+        </p>
+        <p><strong>Te esperamos lá! Será uma noite de bênçãos e muita alegria!</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('flap').classList.add('open');
+      document.getElementById('letter').classList.add('show');
+    }, 3000);
+  </script>
+
+</body>
+</html>
