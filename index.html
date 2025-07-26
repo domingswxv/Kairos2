@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Convite Jovens Sarados</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: #FF6F00; /* Fundo laranja vibrante */
+      background: #FF6F00; /* Laranja */
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
@@ -18,10 +18,9 @@
 
     .envelope-container {
       position: relative;
-      width: 95vw;
-      max-width: 1080px;
-      height: 65vh;
-      max-height: 1560px;
+      width: 90vw;
+      max-width: 500px;
+      height: 75vh;
       background: transparent;
       perspective: 1000px;
     }
@@ -29,13 +28,12 @@
     .envelope-body {
       width: 100%;
       height: 100%;
+      background: #fff; /* Branco */
+      border: 2px solid #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 12px;
       position: relative;
-      background: #fff; /* Carta branca */
-      border: 2px solid #e68a00; /* borda laranja escuro */
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      z-index: 1;
       overflow: hidden;
-      border-radius: 10px;
     }
 
     .envelope-flap {
@@ -44,15 +42,12 @@
       left: 0;
       width: 0;
       height: 0;
-      border-left: 50% solid transparent;
-      border-right: 50% solid transparent;
-      border-bottom: 25vh solid #fff; /* flap branco */
+      border-left: 45vw solid transparent;
+      border-right: 45vw solid transparent;
+      border-bottom: 25vh solid #fff; /* Branco */
       transform-origin: top center;
-      transition: transform 1.2s ease-in-out;
+      transition: transform 1s ease-in-out;
       z-index: 2;
-      border-radius: 0 0 10px 10px;
-      border-left-color: transparent;
-      border-right-color: transparent;
     }
 
     .envelope-flap.open {
@@ -62,20 +57,19 @@
     .letter {
       position: absolute;
       top: 25vh;
-      left: 3%;
-      width: 94%;
-      height: calc(100% - 25vh - 20px);
-      background: #fff; /* carta branca */
+      left: 5%;
+      width: 90%;
+      height: calc(100% - 27vh);
+      background: #fff;
       padding: 20px;
       box-sizing: border-box;
       border-radius: 8px;
       opacity: 0;
-      transform: translateY(40px);
-      transition: transform 1s ease, opacity 1s ease;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      z-index: 0;
+      transform: translateY(30px);
+      transition: transform 0.8s ease, opacity 0.8s ease;
       overflow-y: auto;
-      color: #222;
+      color: #333;
+      z-index: 1;
     }
 
     .letter.show {
@@ -85,39 +79,23 @@
 
     .letter h2 {
       margin-top: 0;
-      font-size: 2.5rem;
-      color: #8b0000;
+      font-size: 1.5rem;
+      color: #c62828;
       text-align: center;
     }
 
-    .letter p {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      color: #222;
+    .letter p, .letter ul {
+      font-size: 1rem;
+      line-height: 1.5;
     }
 
     .letter ul {
-      padding-left: 25px;
-      margin-top: 10px;
-      margin-bottom: 15px;
+      padding-left: 20px;
+      margin: 10px 0;
     }
 
     .letter li {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
-    /* Scrollbar estilizado para o letter */
-    .letter::-webkit-scrollbar {
-      width: 8px;
-    }
-    .letter::-webkit-scrollbar-track {
-      background: #ddd;
-      border-radius: 8px;
-    }
-    .letter::-webkit-scrollbar-thumb {
-      background: #999;
-      border-radius: 8px;
+      margin-bottom: 5px;
     }
   </style>
 </head>
@@ -129,13 +107,8 @@
       <div class="letter" id="letter">
         <h2>📬 Convite Jovens Sarados</h2>
         <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
-        <p>
-          Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
-        </p>
-        <p>
-          Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
-          Vamos juntos buscar a renovação e o avivamento espiritual!
-        </p>
+        <p>Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong></p>
+        <p>Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.</p>
         <p><strong>O que levar?</strong></p>
         <ul>
           <li>✅ Bíblia e terço</li>
@@ -157,7 +130,7 @@
     setTimeout(() => {
       document.getElementById('flap').classList.add('open');
       document.getElementById('letter').classList.add('show');
-    }, 3000);
+    }, 2000);
   </script>
 
 </body>
