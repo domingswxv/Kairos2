@@ -2,74 +2,64 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Convite Jovens Sarados</title>
+  <title>Carta Animada - Jovens Sarados</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: #FF6F00; /* Laranja */
-      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FF6F00; /* fundo laranja */
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .envelope-container {
       position: relative;
-      width: 90vw;
-      max-width: 500px;
-      height: 75vh;
-      background: transparent;
+      width: 360px;
+      height: 520px;
       perspective: 1000px;
-    }
-
-    .envelope-body {
-      width: 100%;
-      height: 100%;
-      background: #fff; /* Branco */
-      border: 2px solid #fff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
     }
 
     .envelope-flap {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 45vw solid transparent;
-      border-right: 45vw solid transparent;
-      border-bottom: 25vh solid #fff; /* Branco */
+      width: 100%;
+      height: 50%;
+      background-color: #fff;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top center;
       transition: transform 1s ease-in-out;
-      z-index: 2;
+      z-index: 3;
     }
 
     .envelope-flap.open {
       transform: rotateX(-180deg);
     }
 
-    .letter {
+    .envelope-body {
       position: absolute;
-      top: 25vh;
-      left: 5%;
-      width: 90%;
-      height: calc(100% - 27vh);
-      background: #fff;
+      top: 25%;
+      width: 100%;
+      height: 75%;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       padding: 20px;
-      box-sizing: border-box;
-      border-radius: 8px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .letter {
       opacity: 0;
       transform: translateY(30px);
-      transition: transform 0.8s ease, opacity 0.8s ease;
+      transition: opacity 1s ease, transform 1s ease;
+      height: 100%;
       overflow-y: auto;
-      color: #333;
-      z-index: 1;
     }
 
     .letter.show {
@@ -78,24 +68,34 @@
     }
 
     .letter h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #c62828;
+      font-size: 1.4rem;
       text-align: center;
+      color: #b71c1c;
+      margin-bottom: 10px;
     }
 
     .letter p, .letter ul {
-      font-size: 1rem;
+      font-size: 0.95rem;
+      color: #333;
       line-height: 1.5;
+      margin-bottom: 10px;
     }
 
     .letter ul {
       padding-left: 20px;
-      margin: 10px 0;
     }
 
     .letter li {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+    }
+
+    /* Scroll bonito */
+    .letter::-webkit-scrollbar {
+      width: 6px;
+    }
+    .letter::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 3px;
     }
   </style>
 </head>
@@ -107,8 +107,12 @@
       <div class="letter" id="letter">
         <h2>📬 Convite Jovens Sarados</h2>
         <p><strong>Fala sarados! Tudo bem com vocês? ❤️</strong></p>
-        <p>Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong></p>
-        <p>Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.</p>
+        <p>
+          Venham celebrar conosco os <strong>9 anos da Missão Jovens Sarados! 🥳🎂🎉</strong>
+        </p>
+        <p>
+          Neste dia especial, vamos refletir sobre a jornada que percorremos juntos e renovar nossa fé e compromisso com Deus.
+        </p>
         <p><strong>O que levar?</strong></p>
         <ul>
           <li>✅ Bíblia e terço</li>
@@ -127,6 +131,7 @@
   </div>
 
   <script>
+    // anima a tampa e revela a carta
     setTimeout(() => {
       document.getElementById('flap').classList.add('open');
       document.getElementById('letter').classList.add('show');
